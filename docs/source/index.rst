@@ -1,7 +1,7 @@
 Timestamps Overview
 ===================
 
-The Timestamps package provids tools for working with time-related values without the contraints that
+The Timestamps package provides tools for working with time-related values without the constraints that
 are normally associated with regular time series data.
 
 Contents
