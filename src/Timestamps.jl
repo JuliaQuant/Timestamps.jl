@@ -21,5 +21,6 @@ export Timestamp
 include("timestamp.jl")
 include("conversion.jl")
 include("operators.jl")
+include("arraymethods.jl")
 
 end

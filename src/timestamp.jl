@@ -5,7 +5,4 @@ immutable Timestamp{T} <: AbstractTimestamp
     value::T
 end
 
-## show
-
 show{T}(io::IO, ts::Timestamp{T}) =  print(io, ts.timestamp, " | ", ts.value)
-
