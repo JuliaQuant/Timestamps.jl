@@ -17,5 +17,6 @@ import Base: show
 export Timestamp
 
 include("timestamp.jl")
+include("operators.jl")
 
 end
