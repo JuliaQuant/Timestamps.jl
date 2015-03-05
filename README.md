@@ -38,19 +38,19 @@ julia> clstamp[1] + clstamp[2]
 
 julia> clstamp[1] - clstamp[2]
 1 day | 9.439999999999998
-
-julia> foo = Timestamp(today(),12);
-
-julia> bar = Timestamp(today(),"hello");
+````
 
 #### Wild West time series
 
-Since an `Array{Timestamp}` doesn't enforce invariants, it may be better to name it a collection of
-time-related objects. 
+Since an `Array{Timestamp}` doesn't enforce invariants, it may be better to name it a collection of time-related objects. 
 
-When we `vcat` the clstamp array with foo and bar, we get a strange-looking array that includes mixed-type
-values and duplicate dates. This data structure is designed this way to allow maximum freedom to developers
-to arrange time-related objects in any way they seem fit.
+Below we illustrate what strange-looking collections can be created. This data structure is designed this way to allow 
+maximum freedom to developers to arrange time-related objects in any way they seem fit.
+
+````julia
+julia> foo = Timestamp(today(),12);
+
+julia> bar = Timestamp(today(),"hello");
 
 julia> baz = vcat(clstamp,foo,bar)
 502-element Array{Timestamps.Timestamp{T},1}:
