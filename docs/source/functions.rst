@@ -4,23 +4,23 @@ Methods on arrays
 When the ``value`` elements in an ``Array{Timestamp}`` are homogenous, it may be convenient to perform common array 
 computations. The following methods are supported
 
-+------------+-----------------------------------------------+
-| Method     | Description                                   |
-+============+===============================================+
-| ``sum``    | sum of the values & span of days              |
-+------------+-----------------------------------------------+
-| ``prod``   | product of the values & span of days          |
-+------------+-----------------------------------------------+
-| ``mean``   | mean of the values & span of days             |
-+------------+-----------------------------------------------+
-| ``var``    | variance of the values & span of days         |
-+------------+-----------------------------------------------+
-| ``std``    | st&ard deviation of the values & span of days |
-+------------+-----------------------------------------------+
-| ``maximum``| maximum of the values & span of days          |
-+------------+-----------------------------------------------+
-| ``minimum``| minimum of the values & span of days          |
-+------------+-----------------------------------------------+
++------------+-------------------------------------------------+
+| Method     | Description                                     |
++============+=================================================+
+| ``sum``    | sum of the values & span of days                |
++------------+-------------------------------------------------+
+| ``prod``   | product of the values & span of days            |
++------------+-------------------------------------------------+
+| ``mean``   | mean of the values & span of days               |
++------------+-------------------------------------------------+
+| ``var``    | variance of the values & span of days           |
++------------+-------------------------------------------------+
+| ``std``    | standard deviation of the values & span of days |
++------------+-------------------------------------------------+
+| ``maximum``| maximum of the values & span of days            |
++------------+-------------------------------------------------+
+| ``minimum``| minimum of the values & span of days            |
++------------+-------------------------------------------------+
 
 An example in REPL::
 

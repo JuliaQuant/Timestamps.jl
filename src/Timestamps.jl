@@ -14,7 +14,7 @@ else
     using Base.Dates
 end
 
-import Base: show, convert
+import Base: show, convert, sum, prod, mean, var, std, maximum, minimum
 
 export Timestamp
 
