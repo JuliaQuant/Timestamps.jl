@@ -1,3 +1,3 @@
-using Timestamps, TimeSeries, MarketData
+using MarketData
 
 clstamp = Array{Timestamp}(cl)

@@ -1,4 +1,4 @@
-using Timestamps, FactCheck
+using Timestamps, MarketData, FactCheck
 
 include("timestamp.jl")
 include("operators.jl")
