@@ -1,4 +1,4 @@
-using FactCheck
+using Timestamps, FactCheck
 
 include("timestamp.jl")
 include("operators.jl")
