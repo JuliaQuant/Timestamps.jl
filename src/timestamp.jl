@@ -5,4 +5,9 @@ immutable Timestamp{T} <: AbstractTimestamp
     value::T
 end
 
-show{T}(io::IO, ts::Timestamp{T}) =  print(io, ts.timestamp, " | ", ts.value)
+show{T}(io::IO, ts::Timestamp{T}) =
+    try
+        isnull(ts.value) ? print(io, ts.timestamp, " | ", "NA") : nothing
+    catch
+        print(io, ts.timestamp, " | ", ts.value)
+end
