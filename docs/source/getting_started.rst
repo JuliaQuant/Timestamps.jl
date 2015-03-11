@@ -1,9 +1,6 @@
 Getting Started
-==============
+===============
 
-Timestamps is not a registered package. To add it to your Julia packages, simply do the following in 
-REPL ::
+Timestamps is a registered package. To add it to your Julia packages, simply do the following in REPL ::
 
-    Pkg.clone("https://github.com/JuliaQuant/Timestamps.jl.git")
-
-This package is presently experimental and you can expect the API to change.
+    Pkg.add("Timestamps")
