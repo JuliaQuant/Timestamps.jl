@@ -1,4 +1,8 @@
-include("stampdata.jl")
+if VERSION < v"0.4-"
+   #clstamp = Array(Timestamp, cl)
+else
+    clstamp = Array{Timestamp}(cl)
+end
 
 facts("timestamp conversion") do
 
