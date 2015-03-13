@@ -1,4 +1,8 @@
-include("stampdata.jl")
+if VERSION < v"0.4-"
+   #clstamp = Array(Timestamp, cl)
+else
+    clstamp = Array{Timestamp}(cl)
+end
 
 facts("array methods work") do
 
@@ -9,8 +13,8 @@ facts("array methods work") do
 
     context("statistical methods") do
         @fact mean(clstamp).value    => roughly(46.190479999999994)
-        @fact var(clstamp).value     => 1496.90588754469
-        @fact std(clstamp).value     => 38.68986802180501
+        @fact var(clstamp).value     => roughly(1496.90588754469)
+        @fact std(clstamp).value     => roughly(38.68986802180501)
         @fact maximum(clstamp).value => 144.19
         @fact minimum(clstamp).value => 14.0
     end

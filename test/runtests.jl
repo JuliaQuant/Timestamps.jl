@@ -1,8 +1,15 @@
 using Timestamps, MarketData, FactCheck
 
-include("timestamp.jl")
-include("operators.jl")
-include("conversion.jl")
-include("arraymethods.jl")
+if VERSION < v"0.4-"
+    include("timestamp.jl")
+   # include("operators.jl")
+   # include("conversion.jl")
+   #  include("arraymethods.jl")
+else
+    include("timestamp.jl")
+    include("operators.jl")
+    include("conversion.jl")
+    include("arraymethods.jl")
+end
 
 exitstatus()
