@@ -14,7 +14,7 @@ else
     using Base.Dates
 end
 
-import Base: show, convert, sum, prod, mean, var, std, maximum, minimum
+import Base: show, convert, sum, prod, mean, var, std, maximum, minimum, merge
 
 export Timestamp
 
@@ -29,5 +29,6 @@ end
 #include("conversion.jl")
 include("operators.jl")
 include("arraymethods.jl")
+include("utils.jl")
 
 end

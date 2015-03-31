@@ -21,14 +21,13 @@
     using MarketData
     Apple = Array{Timestamp}(AAPL)
     ```
-
     """
 
-function convert(::Type{Array{Timestamps.Timestamp}}, A::TimeSeries.TimeArray)
-   stamps = Array{Timestamp}(length(A))
-   for i in 1:length(A)
-       stamps[i] = Timestamp(A.timestamp[i], A.values[i])
-   end
-   stamps
-end
+    function convert(::Type{Array{Timestamps.Timestamp}}, A::TimeSeries.TimeArray)
+       stamps = Array{Timestamp}(length(A))
+       for i in 1:length(A)
+           stamps[i] = Timestamp(A.timestamp[i], A.values[i])
+       end
+       stamps
+    end
 end

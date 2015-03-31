@@ -10,4 +10,5 @@ show{T}(io::IO, ts::Timestamp{T}) =
         isnull(ts.value) ? print(io, ts.timestamp, " | ", "NA") : nothing
     catch
         print(io, ts.timestamp, " | ", ts.value)
+        #print_with_color(:blue, io, ts.timestamp, " | ", ts.value) # explicit because merge mucks it up if other types define colors
 end

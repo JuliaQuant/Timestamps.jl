@@ -13,6 +13,7 @@ Contents
    getting_started
    timestamp
    operators
+   merge
    functions
    mixed
    dupedates
