@@ -1,6 +1,6 @@
 using MarketData
 
-clstamp = Array{Timestamp}(cl)
+clstamp = convert(Array{Timestamp}, cl)
 
 facts("timestamp mathematical operators between two Timestamps") do
 
@@ -58,9 +58,10 @@ facts("timestamp comparison operators between two Timestamps") do
         @fact (clstamp[1] < clstamp[3]).value  => false
     end
 
-    context("comparison == works") do
-        @pending (clstamp[1] == clstamp[2]).value => false
-    end
+#     context("comparison == works") do
+#         @fact clstamp[1] == clstamp[2].value => false   # this does work
+#         @fact (clstamp[1] == clstamp[2].value) => false # this should work
+#     end
 
     context("comparison <= works") do
         @fact (clstamp[1] <= clstamp[2]).value => false
@@ -82,7 +83,7 @@ facts("timestamp comparison operators between one Timestamp and a number") do
     end
 
     context("comparison == works") do
-        @pending (clstamp[1] == 100).value => false
+#        @fact (clstamp[1] == 100).value => false
     end
 
     context("comparison <= works") do
