@@ -1,6 +1,6 @@
 using MarketData
 
-clstamp = Array(Timestamp, cl)
+clstamp = Array{Timestamp}(cl)
 
 facts("array methods work") do
 
