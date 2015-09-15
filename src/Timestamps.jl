@@ -1,32 +1,15 @@
-if VERSION < v"0.4-"
-    using Dates
-else
-    using Base.Dates
-end
+using Dates
 
 module Timestamps
 
-using Requires
-
-if VERSION < v"0.4-"
-    using Dates
-else
-    using Base.Dates
-end
+using Dates, Requires
 
 import Base: show, convert, sum, prod, mean, var, std, maximum, minimum
 
 export Timestamp
 
-if VERSION < v"0.4-"
-    include("timestamp3.jl")
-    include("conversion3.jl")
-else
-    include("timestamp.jl")
-    include("conversion.jl")
-end
-#include("timestamp.jl")
-#include("conversion.jl")
+include("timestamp.jl")
+include("conversion.jl")
 include("operators.jl")
 include("arraymethods.jl")
 

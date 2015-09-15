@@ -1,8 +1,6 @@
-if VERSION < v"0.4-"
-   #clstamp = Array(Timestamp, cl)
-else
-    clstamp = Array{Timestamp}(cl)
-end
+using MarketData
+
+clstamp = Array(Timestamp, cl)
 
 facts("timestamp conversion") do
 

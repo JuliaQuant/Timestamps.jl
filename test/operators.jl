@@ -1,8 +1,6 @@
-if VERSION < v"0.4-"
-   #clstamp = Array(Timestamp, cl)
-else
-    clstamp = Array{Timestamp}(cl)
-end
+using MarketData
+
+clstamp = Array(Timestamp, cl)
 
 facts("timestamp mathematical operators between two Timestamps") do
 
@@ -12,7 +10,7 @@ facts("timestamp mathematical operators between two Timestamps") do
     end
 
     context("mathematical - works") do
-        @fact (clstamp[1] - clstamp[3]).value     => roughly(7.94)
+        @fact (clstamp[1] - clstamp[3]).value     => roughly(7.94, atol=.01)
         @fact (clstamp[1] - clstamp[3]).timestamp => Day(2)
     end
 
