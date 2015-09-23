@@ -4,7 +4,7 @@ module Timestamps
 
 using Dates, Requires
 
-import Base: show, convert, sum, prod, mean, var, std, maximum, minimum, merge
+import Base: getindex, show, convert, sum, prod, mean, var, std, maximum, minimum, merge
 
 export Timestamp, TimestampArray
 

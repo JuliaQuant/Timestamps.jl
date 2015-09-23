@@ -1,12 +1,8 @@
-if VERSION < v"0.4-"
-   #clstamp = Array(Timestamp, cl)
-else
-    using MarketData
-    c1  = Array{Timestamp}(cl[1:5])
-    c2  = Array{Timestamp}(cl[1:5])
+using MarketData
+    c1  = convert(TimestampArray, cl[1:5])
+    c2  = c1
     cs  = merge(c1, c2)
     csu = merge(c1, c2, sorted=false)
-end
 
 facts("merge works") do
 
