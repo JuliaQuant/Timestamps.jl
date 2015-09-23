@@ -1,6 +1,6 @@
 using MarketData
 
-clstamp = convert(Array{Timestamp}, cl)
+clstamp = convert(TimestampArray, cl)
 
 facts("timestamp mathematical operators between two Timestamps") do
 
