@@ -10,6 +10,7 @@ else
     include("operators.jl")
     include("conversion.jl")
     include("arraymethods.jl")
+    include("utils.jl")
 end
 
 exitstatus()
