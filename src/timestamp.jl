@@ -5,10 +5,15 @@ immutable Timestamp{T} <: AbstractTimestamp
     value::T
 end
 
-function show{T}(io::IO, ts::Timestamp{T}) =
-    try
-        isnull(ts.value) ? print(io, ts.timestamp, " | ", "NA") : nothing
-    catch
-        print(io, ts.timestamp, " | ", ts.value)
-        #print_with_color(:blue, io, ts.timestamp, " | ", ts.value) # explicit because merge mucks it up if other types define colors
+typealias TimestampArray{T} Array{Timestamp{T},1}
+
+function Base.show{T}(io::IO, ts::Timestamp{T})
+    print(io, ts.timestamp, " | ", ts.value)
 end
+
+# show{T}(io::IO, ts::Timestamp{T}) = 
+#     try
+#        isnull(ts.value) ? print(io, ts.timestamp, " | ", "NA") : nothing
+#     catch
+#        print(io, ts.timestamp, " | ", ts.value)
+# end
