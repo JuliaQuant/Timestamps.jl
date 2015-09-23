@@ -21,10 +21,8 @@
     using MarketData
     Apple = Array{Timestamp}(AAPL)
     ```
-
     """
 
-#function convert{T}(::Type{Array{Timestamp{T}}}, A::TimeSeries.TimeArray{T,1})
 function convert{T}(::Type{TimestampArray}, A::TimeSeries.TimeArray{T,1})
     stamps = Array(Timestamp, length(A))
     for i in 1:length(A)
