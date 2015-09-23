@@ -1,13 +1,11 @@
-if VERSION < v"0.4-"
-   #clstamp = Array(Timestamp, cl)
-else
-    clstamp = Array{Timestamp}(cl)
-end
+using MarketData
+
+clstamp = convert(Array{Timestamp}, cl)
 
 facts("array methods work") do
 
     context("aggregating methods") do
-        @fact sum(clstamp).value       => roughly(23095.24)
+        @fact sum(clstamp).value       => roughly(23095.24, atol=.01)
         @fact prod(clstamp[1:2]).value => 11473.85
     end
 

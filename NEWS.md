@@ -1,7 +1,7 @@
-### 0.x.x + 0.0.1
+### 0.0.3
 
-* last version with support for Julia 0.3
+* limit support to Julia 0.3 only
 
-### pre-0.x.x
+### pre-0.0.3
 
-Not currently documented.
+* Not currently documented.

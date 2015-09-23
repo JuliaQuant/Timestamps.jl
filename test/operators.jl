@@ -1,8 +1,6 @@
-if VERSION < v"0.4-"
-   #clstamp = Array(Timestamp, cl)
-else
-    clstamp = Array{Timestamp}(cl)
-end
+using MarketData
+
+clstamp = convert(Array{Timestamp}, cl)
 
 facts("timestamp mathematical operators between two Timestamps") do
 
@@ -12,7 +10,7 @@ facts("timestamp mathematical operators between two Timestamps") do
     end
 
     context("mathematical - works") do
-        @fact (clstamp[1] - clstamp[3]).value     => roughly(7.94)
+        @fact (clstamp[1] - clstamp[3]).value     => roughly(7.94, atol=.01)
         @fact (clstamp[1] - clstamp[3]).timestamp => Day(2)
     end
 
@@ -60,9 +58,10 @@ facts("timestamp comparison operators between two Timestamps") do
         @fact (clstamp[1] < clstamp[3]).value  => false
     end
 
-    context("comparison == works") do
-        @pending (clstamp[1] == clstamp[2]).value => false
-    end
+#     context("comparison == works") do
+#         @fact clstamp[1] == clstamp[2].value => false   # this does work
+#         @fact (clstamp[1] == clstamp[2].value) => false # this should work
+#     end
 
     context("comparison <= works") do
         @fact (clstamp[1] <= clstamp[2]).value => false
@@ -84,7 +83,7 @@ facts("timestamp comparison operators between one Timestamp and a number") do
     end
 
     context("comparison == works") do
-        @pending (clstamp[1] == 100).value => false
+#        @fact (clstamp[1] == 100).value => false
     end
 
     context("comparison <= works") do
