@@ -26,6 +26,7 @@
     function convert(::Type{Array{Timestamps.Timestamp}}, A::TimeSeries.TimeArray)
        # this doesnt work
        #stamps = Array{Timestamp}(length(A))
+
        stamps = Timestamp[]
        for i in 1:length(A)
            push!(stamps, Timestamp(A.timestamp[i], A.values[i]))
