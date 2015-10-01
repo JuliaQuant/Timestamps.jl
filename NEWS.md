@@ -1,7 +1,8 @@
-### 0.0.4 (not fully implemented)
+### 0.0.4
 
 * typealias TimestampArray{T} Array{Timestamp{T},1} added
 * fixes TimeArray conversion methods
+* getindex supported for single, vector and StepRange of TimeType
 * merge and sort methods added
 
 ### 0.0.3
