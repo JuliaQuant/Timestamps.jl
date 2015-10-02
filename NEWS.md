@@ -1,3 +1,8 @@
+### 0.1.0
+
+* first version to support only Julia 0.4
+* precompilation added
+
 ### 0.0.4
 
 * typealias TimestampArray{T} Array{Timestamp{T},1} added
