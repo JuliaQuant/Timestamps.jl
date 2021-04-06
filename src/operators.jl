@@ -1,41 +1,29 @@
 # mathematical operators between two Timestamp objects
-# for op in [:+, :-, :*, :/]
-#     @eval begin
-#         function ($op)(ts1::Timestamp, ts2::Timestamp)
-#             tstamp = abs(ts1.timestamp - ts2.timestamp)
-#             vals   = ($op)(ts1.value, ts2.value)
-#             Timestamp(tstamp, vals)
-#         end # function
-#     end # eval
-# end # loop
-
-# mathematical operators between a Timestamp object and Int,Float64
-# for op in [:+, :-, :*, :/]
-#     @eval begin
-#         function ($op)(ts1::Timestamp, num::Union(Int,Float64))
-#             vals = ($op)(ts1.value, num)
-#             Timestamp(ts1.timestamp, vals)
-#         end # function
-#     end # eval
-# end # loop
-
-# comparison operators between two Timestamp objects
-#for op in [:>, :<, :==, :>=, :<=]
-for op in [:(>), :(<), :(>=), :(<=), :(==)]
+for op in [:(Base.:+), :(Base.:-), :(Base.:*), :(Base.:/)]
     @eval begin
         function ($op)(ts1::Timestamp, ts2::Timestamp)
-            ($op)(ts1.ts, ts2.ts)
+            vals   = ($op).(ts1.val, ts2.val)
+            Timestamp(ts1.ts, vals)
         end # function
     end # eval
 end # loop
 
-# comparison operators between a Timestamp object and Int,Float64
+# mathematical operators between a Timestamp object and Number
+for op in [:(Base.:+), :(Base.:-), :(Base.:*), :(Base.:/)]
+    @eval begin
+        function ($op)(ts1::Timestamp, num::Number)
+            vals = ($op).(ts1.val, num)
+            Timestamp(ts1.ts, vals)
+        end # function
+    end # eval
+end # loop
+
+# comparison operators between two Timestamp objects
 #for op in [:>, :<, :==, :>=, :<=]
-# for op in [:>, :<, :>=, :<=]
-#     @eval begin
-#         function ($op)(ts1::Timestamp, num::Union(Int,Float64))
-#             vals = ($op)(ts1.value, num)
-#             Timestamp(ts1.timestamp, vals)
-#         end # function
-#     end # eval
-# end # loop
+for op in [:(Base.:>), :(Base.:<), :(Base.:>=), :(Base.:<=), :(Base.isless)]
+    @eval begin
+        function ($op)(ts1::Timestamp{D, T1}, ts2::Timestamp{D, T2}) where {D, T1, T2}
+            ($op)(ts1.ts, ts2.ts)
+        end # function
+    end # eval
+end # loop
