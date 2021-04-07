@@ -46,3 +46,28 @@ Tables.getcolumn(mci::TimestampArrayTableColsIterator, nm::Symbol) = Tables.getc
 ########################################
 # Constructor
 ########################################
+
+# Ok, this one is experimental and probably should be moved to a different package
+istimetable(::T) where T = istimetable(T)
+istimetable(::Type{T}) where T = false
+istimetable(::Type{<:TimestampArray}) = true
+timeaxis(x::TimestampArray) = :timestamp
+
+function TimestampArray(x; timestamp = :timestamp)
+    names = Tables.columnnames(x)
+    tscol = istimetable(x) ? timeaxis(x) : timestamp # fallback
+    indx = Vector{Int}(undef, length(names) - 1)
+    k = 0
+    for (i, nm) in pairs(names)
+        nm == tscol && continue
+        k += 1
+        indx[k] = i
+    end
+    rows = Tables.rows(x)
+    tsps = map(rows) do row
+        rt = ntuple(i -> row[indx[i]], length(row) - 1)
+        Timestamp(getproperty(row, tscol), rt)
+    end
+    
+    return TimestampArray(tsps, names[indx])
+end
