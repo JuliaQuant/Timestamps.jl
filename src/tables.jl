@@ -28,6 +28,7 @@ Tables.columnaccess(::Type{<:TimestampArray}) = true
 Tables.columns(m::TimestampArray) = TimestampArrayTableColsIterator(Dict(:timestamp => 1, (m.names .=> 2:length(m.names)+1)...), m)
 Tables.schema(m::TimestampArray) = Tables.Schema((:timestamp, m.names...), nothing)
 Tables.schema(m::TimestampArray{D, T}) where {D, T <: Tuple} = Tables.Schema((:timestamp, m.names...), Tuple{D, T.types...})
+Tables.schema(m::TimestampArrayTableRowsIterator) = Tables.schema(m.m)
 
 function Tables.getcolumn(m::TimestampArray{D, T}, i::Int) where {D, T <: Tuple}
     i == 1 && return map(x -> x.ts, m.tsps)
