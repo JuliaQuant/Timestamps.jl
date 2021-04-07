@@ -1,6 +1,4 @@
-abstract type AbstractTimestamp end
- 
-struct Timestamp{D, T} <: AbstractTimestamp
+struct Timestamp{D, T} <: Dates.AbstractTime
     ts::D
     val::T
 end
@@ -9,7 +7,11 @@ function Base.show(io::IO, ts::Timestamp)
     print(io, ts.ts, " | ", ts.val)
 end
 
+Dates.month(ts::Timestamp) = month(ts.ts)
+Dates.year(ts::Timestamp) = year(ts.ts)
+Dates.day(ts::Timestamp) = day(ts.ts)
 
+# Should use something like AxisKeys.jl or NamedDims.jl
 # single date
 
 # function getindex(tsa::TimestampArray, d::TimeType)
