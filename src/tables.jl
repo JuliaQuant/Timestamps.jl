@@ -51,6 +51,9 @@ Tables.getcolumn(mci::TimestampArrayTableColsIterator, nm::Symbol) = Tables.getc
 # Ok, this one is experimental and probably should be moved to a different package
 istimetable(::T) where T = istimetable(T)
 istimetable(::Type{T}) where T = false
+timeaxis(::T) where T = timeaxis(T)
+timeaxis(::Type{T}) where T = :timestamp
+
 istimetable(::Type{<:TimestampArray}) = true
 timeaxis(x::TimestampArray) = :timestamp
 
@@ -66,9 +69,9 @@ function TimestampArray(x; timestamp = :timestamp)
     end
     rows = Tables.rows(x)
     tsps = map(rows) do row
-        rt = ntuple(i -> row[indx[i]], length(row) - 1)
-        Timestamp(getproperty(row, tscol), rt)
+        rt = ntuple(i -> Tables.getcolumn(row, indx[i]), length(row) - 1)
+        Timestamp(Tables.getcolumn(row, tscol), rt)
     end
     
-    return TimestampArray(tsps, names[indx])
+    return TimestampArray(tsps, collect(names[indx]))
 end
